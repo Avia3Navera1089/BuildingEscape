@@ -29,12 +29,18 @@ private:
 	void Grab();
 	void Release();
 
-	//find (assumed) attached physics handle
+	// find (assumed) attached physics handle
 	void FindPhysicsHandleComponent();
 	
-	//find (assumed) attached input component
+	// find (assumed) attached input component
 	void SetupInputComponent();
 
-	//return hit for first physics body in reach
+	// return hit for first physics body in reach
 	const FHitResult GetFirstPhysicsBodyInReach();
+
+	// returns current start of reach line
+	FVector GetReachLineStart(); 
+
+	// returns current end of reach line
+	FVector GetReachLineEnd();
 };
