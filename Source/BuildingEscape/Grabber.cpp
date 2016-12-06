@@ -59,6 +59,7 @@ void UGrabber::Grab()
 	/// if we hit something attach physics handle
 	if (ActorHit)
 	{
+		if (!PhysicsHandle) { return; }
 		// attach physics handle
 		PhysicsHandle->GrabComponent(
 			ComponentToGrab,
@@ -71,7 +72,7 @@ void UGrabber::Grab()
 
 void UGrabber::Release()
 {
-	//TODO release phsics handle 
+	if (!PhysicsHandle) { return; }
 	PhysicsHandle->ReleaseComponent();
 }
 
@@ -80,6 +81,8 @@ void UGrabber::TickComponent( float DeltaTime, ELevelTick TickType, FActorCompon
 {
 	Super::TickComponent( DeltaTime, TickType, ThisTickFunction );
 	
+	// covering my ass 
+	if (!PhysicsHandle) { return; }
 	// if the physics handle is attached
 	if (PhysicsHandle->GrabbedComponent)
 	{
